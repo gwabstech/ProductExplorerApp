@@ -11,7 +11,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ProductListViewModel @Inject constructor(
-    private val repository: ProductRepository
+    repository: ProductRepository
 ) : ViewModel() {
     val products = repository.getProducts().stateIn(
         viewModelScope,
