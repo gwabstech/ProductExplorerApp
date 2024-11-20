@@ -8,7 +8,7 @@ plugins {
 
 android {
     namespace = "com.gwabs.productexplorerapp"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.gwabs.productexplorerapp"
@@ -84,6 +84,12 @@ dependencies {
     implementation ("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.2")
 
     implementation ("io.coil-kt:coil-compose:2.4.0")
+
+    implementation ("com.squareup.retrofit2:converter-moshi:2.11.0")
+    implementation ("com.squareup.moshi:moshi-kotlin:1.15.0")
+    // Moshi with Kotlin suppo
+
+
 
 
 
