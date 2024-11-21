@@ -19,6 +19,7 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -31,6 +32,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.AsyncImage
 import com.gwabs.productexplorerapp.data.model.Product
+import com.gwabs.productexplorerapp.utils.GeneralAppBar
 import com.gwabs.productexplorerapp.utils.Resource
 
 
@@ -41,23 +43,31 @@ fun ProductListScreen(
 ) {
     val productsState by viewModel.products.collectAsState()
 
-    when (productsState) {
-        is Resource.Loading -> CircularProgressIndicator(
-            modifier = Modifier.fillMaxSize().wrapContentSize(Alignment.Center)
-        )
-        is Resource.Success -> {
-            val products = (productsState as Resource.Success<List<Product>>).data
-            LazyColumn {
-                items(products ?: emptyList()) { product ->
-                    ProductCard(product = product, onClick = { onProductClick(product.id) })
+    Scaffold (
+        topBar = {
+            GeneralAppBar(title = "Product List",isHome = true)
+        }
+    ) { paddingValues ->
+
+        when (productsState) {
+            is Resource.Loading -> CircularProgressIndicator(
+                modifier = Modifier.fillMaxSize().wrapContentSize(Alignment.Center)
+            )
+            is Resource.Success -> {
+                val products = (productsState as Resource.Success<List<Product>>).data
+                LazyColumn(Modifier.padding(paddingValues)) {
+                    items(products ?: emptyList()) { product ->
+                        ProductCard(product = product, onClick = { onProductClick(product.id) })
+                    }
                 }
             }
+            is Resource.Error -> Text(
+                text = productsState.message ?: "An error occurred",
+                modifier = Modifier.fillMaxSize(),
+            )
         }
-        is Resource.Error -> Text(
-            text = productsState.message ?: "An error occurred",
-            modifier = Modifier.fillMaxSize(),
-        )
     }
+
 
 }
 

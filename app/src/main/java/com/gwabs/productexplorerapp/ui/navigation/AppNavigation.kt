@@ -24,7 +24,7 @@ fun AppNavigation() {
             arguments = listOf(navArgument("productId") { type = NavType.IntType })
         ) { backStackEntry ->
             val productId = backStackEntry.arguments?.getInt("productId") ?: 0
-            ProductDetailsScreen(productId)
+            ProductDetailsScreen(productId = productId,navController= navController)
         }
     }
 }

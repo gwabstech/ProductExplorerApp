@@ -22,6 +22,8 @@ class MainActivity : ComponentActivity() {
 
         setContent {
 
+
+
                 AppNavigation()
 
         }
