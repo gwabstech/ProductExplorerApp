@@ -29,9 +29,9 @@ Follow these steps to clone and run the project on your local machine:
 1. **Clone the Repository**:
     - Open a terminal and run:
       ```bash
-      git clone https://github.com/your-username/ProductExplorerApp.git
+      git clone https://github.com/gwabstech/ProductExplorerApp.git
       ```
-    - Replace `your-username` with your actual GitHub username.
+    - 
 
 2. **Open in Android Studio**:
     - Launch Android Studio.
@@ -52,7 +52,6 @@ Follow these steps to clone and run the project on your local machine:
 
 ## Trade-offs and Improvements
 ### Trade-offs:
-- The search functionality was not implemented due to time constraints.
 - Used `fallbackToDestructiveMigration` during development for database schema changes.
 
 ### Future Improvements:
