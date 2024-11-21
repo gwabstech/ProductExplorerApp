@@ -18,4 +18,7 @@ class ProductListViewModel @Inject constructor(
         SharingStarted.WhileSubscribed(5000),
         Resource.Loading()
     )
+
 }
+
+
